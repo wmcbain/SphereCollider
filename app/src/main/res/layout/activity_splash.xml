@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    android:backgroundTint="#ECECEC">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name_str"
+        android:id="@+id/txtViewAppName"
+        android:gravity="center"
+        android:layout_margin="50dp"
+        android:textSize="50sp"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/levelLegendContainerView"
+        android:gravity="center">
+
+
+            <View
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:background="@drawable/legend_circle"
+                android:id="@+id/ball"
+                android:layout_margin="20dp"
+                android:backgroundTint="#ff9dff4d" />
+
+            <View
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:background="@drawable/legend_circle"
+                android:id="@+id/inflater"
+                android:layout_margin="20dp" />
+
+            <View
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:background="@drawable/legend_circle"
+                android:id="@+id/deflater"
+                android:layout_margin="20dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
