@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Level Complete"
-        android:id="@+id/textView"
+        android:id="@+id/textViewModalTitle"
         android:textSize="25sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -54,6 +54,28 @@
                     android:layout_marginLeft="10dp" />
             </TableRow>
         </TableLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="100"
+            android:progressDrawable="@drawable/circle_progress_background"
+            android:id="@+id/progressBarPoints" />
+
+        <ProgressBar
+            android:id="@+id/circle_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:max="100"
+            android:rotation="-90"
+            android:indeterminate="false"
+            android:progressDrawable="@drawable/circle_progress_foreground" />
 
         <LinearLayout
             android:orientation="horizontal"

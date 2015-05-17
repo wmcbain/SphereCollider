@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -56,7 +57,10 @@ public class CustomModal {
         d.setContentView(R.layout.level_complete_modal_content);
 
         ((TextView)d.findViewById(R.id.txtViewScore)).setText(String.format(context.getResources().getString(R.string.level_score), options.get("score")));
-        ((TextView)d.findViewById(R.id.txtViewTime)).setText(String.format(context.getResources().getString(R.string.level_time_completed), options.get("time")));
+        ((TextView)d.findViewById(R.id.textViewModalTitle)).setText( options.get("title") );
+//        ((TextView)d.findViewById(R.id.txtViewTime)).setText(String.format(context.getResources().getString(R.string.level_time_completed), options.get("time")));
+
+        ((ProgressBar)d.findViewById(R.id.progressBarPoints)).setProgress(Integer.parseInt( options.get("scoreProgressVal") ));
 
         Button btnShowLevels = (Button)d.findViewById(R.id.btnShowLevels);
         btnShowLevels.setOnClickListener(new View.OnClickListener() {

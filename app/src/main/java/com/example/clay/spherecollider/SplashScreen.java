@@ -4,6 +4,8 @@ package com.example.clay.spherecollider;
  * Created by Clay on 5/16/2015.
  */
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -16,6 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 public class SplashScreen extends Activity {
 
@@ -41,6 +44,7 @@ public class SplashScreen extends Activity {
         ballDrawable.setColorFilter(Color.parseColor("#2ecc71"), mode);
         deflaterDrawable.setColorFilter(Color.parseColor("#e74c3c"), mode);
         inflaterDrawable.setColorFilter(Color.parseColor("#34495e"), mode);
+
 
         new Handler().postDelayed(new Runnable() {
 

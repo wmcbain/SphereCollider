@@ -290,13 +290,38 @@ public class BallGame extends Activity implements SensorEventListener {
         return coins;
     }
 
-    private void showEndGameModal(){
+    /**
+     * End of Level Modal
+     * @param winLossType : ( 1 = completed and won, 2 = no balls left, 3 = got too big )
+     */
+    private void showEndGameModal(int winLossType){
+
         HashMap<String, String> options = new HashMap<String, String>();
         options.put("score", totalLevelCoinCount+"");
-        options.put("time", "still need timer");
+//        options.put("time", "still need timer");
+
+        // pass in the total amount of points the user collected per  value below
+//        options.put("scoreProgressVal", getScorePercent(totalPointsCollected)+"");
+        options.put("scoreProgressVal", 87+"");
+
+        switch(winLossType){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
 
         CustomModal cm = new CustomModal(this, "level_complete", options);
     }
 
-
+    /**
+     * Grabs the percentage value for the score
+     * @param totalPoints
+     * @return
+     */
+    private int getScorePercent(int totalPoints){
+        return ( ( currentLevel.getMaxPoints() - totalPoints) / currentLevel.getMaxPoints() ) * 100;
+    }
 }
