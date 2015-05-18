@@ -19,11 +19,15 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.example.clay.spherecollider.database.DatabaseConnector;
+import com.example.clay.spherecollider.view.dialogs.CustomModal;
+import com.example.clay.spherecollider.view.level.CurrentLevel;
+import com.example.clay.spherecollider.view.util.AudioPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -322,12 +326,6 @@ public class BallGame extends Activity implements SensorEventListener {
             result.close(); // close the result cursor
             databaseConnector.close(); // close database connection
         } // end method onPostExecute
-    }
-
-    private ArrayList<Coin> getCoins(long levelId){
-        ArrayList<Coin> coins = new ArrayList<>();
-
-        return coins;
     }
 
     /**

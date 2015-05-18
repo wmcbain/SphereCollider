@@ -1,4 +1,4 @@
-package com.example.clay.spherecollider;
+package com.example.clay.spherecollider.view.level;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,6 +20,11 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.clay.spherecollider.BallGame;
+import com.example.clay.spherecollider.R;
+import com.example.clay.spherecollider.SphereCollider;
+import com.example.clay.spherecollider.database.DatabaseConnector;
 
 /**
  * Created by Clay on 4/11/2015.

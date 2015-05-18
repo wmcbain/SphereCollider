@@ -1,4 +1,4 @@
-package com.example.clay.spherecollider;
+package com.example.clay.spherecollider.view.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,14 +6,16 @@ import android.content.Intent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.clay.spherecollider.BallGame;
+import com.example.clay.spherecollider.R;
+import com.example.clay.spherecollider.SphereCollider;
+import com.example.clay.spherecollider.view.level.CurrentLevel;
+import com.example.clay.spherecollider.view.level.LevelView;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by Clay on 4/25/2015.
@@ -26,7 +28,7 @@ public class CustomModal {
 
     public CustomModal(final Context context, String type, HashMap<String, String> options){
         this.context = context;
-        d = new Dialog(context,R.style.CustomDialogTheme);
+        d = new Dialog(context, R.style.CustomDialogTheme);
 
         // set properties that are the same for all instances of this modal
         d.requestWindowFeature(Window.FEATURE_NO_TITLE);

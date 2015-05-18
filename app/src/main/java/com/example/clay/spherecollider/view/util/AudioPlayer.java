@@ -1,4 +1,4 @@
-package com.example.clay.spherecollider;
+package com.example.clay.spherecollider.view.util;
 
 import android.content.Context;
 import android.media.MediaPlayer;

@@ -1,4 +1,4 @@
-package com.example.clay.spherecollider;//add your package name here example: package com.example.dbm;
+package com.example.clay.spherecollider.database;//add your package name here example: package com.example.dbm;
 
 //all required import files
 
