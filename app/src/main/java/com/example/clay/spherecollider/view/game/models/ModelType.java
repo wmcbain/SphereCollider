@@ -10,5 +10,6 @@ public enum ModelType {
     SCORE,
     INFLATER,
     REDUCER,
-    ATTACKER
+    ATTACKER,
+    PAUSE_BTN
 }
