@@ -59,7 +59,7 @@ public class ModelManager {
             int inflateValue = RandomUtility.randIntInRange(40, 80);
             int maxValue = inflateValue * 3;
             int size = inflateValue + ballStartingSize;
-            Inflater inflater = new Inflater(size, maxValue, inflateValue, "#fc8d4d");
+            Inflater inflater = new Inflater(size, maxValue, inflateValue, gameMediator.getInflaterColor());
             inflater = (Inflater)RandomUtility.randomizeLocation(inflater);
             models.add(inflater);
             cnt++;
@@ -69,7 +69,7 @@ public class ModelManager {
             int reduceValue = RandomUtility.randIntInRange(10, 20);
             int maxValue = reduceValue * 3;
             int size = reduceValue + ballStartingSize;
-            Reducer reducer = new Reducer(size, maxValue, reduceValue, "#fc8d4d");
+            Reducer reducer = new Reducer(size, maxValue, reduceValue, gameMediator.getReducerColor());
             reducer = (Reducer)RandomUtility.randomizeLocation(reducer);
             models.add(reducer);
             cnt++;

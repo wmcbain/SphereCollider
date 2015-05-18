@@ -255,7 +255,7 @@ public class LevelManager implements Observer {
         int inflateValue = RandomUtility.randIntInRange(10, 40);
         int maxValue = inflateValue * 3;
         int size = Math.round(inflateValue * 2);
-        Inflater inflater = new Inflater(size, maxValue, inflateValue, "#fc8d4d");
+        Inflater inflater = new Inflater(size, maxValue, inflateValue, gameMediator.getInflaterColor());
         inflater = (Inflater)RandomUtility.randomizeLocation(inflater);
         models.add(inflater);
         interactiveModels.add(inflater);
@@ -269,7 +269,7 @@ public class LevelManager implements Observer {
         int reduceValue = RandomUtility.randIntInRange(10, 20);
         int maxValue = reduceValue * 3;
         int size = Math.round(reduceValue * 2);
-        Reducer reducer = new Reducer(size, maxValue, reduceValue, "#fc8d4d");
+        Reducer reducer = new Reducer(size, maxValue, reduceValue, gameMediator.getReducerColor());
         reducer = (Reducer)RandomUtility.randomizeLocation(reducer);
         models.add(reducer);
         interactiveModels.add(reducer);

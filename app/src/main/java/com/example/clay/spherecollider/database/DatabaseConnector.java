@@ -229,7 +229,7 @@ public class DatabaseConnector
                    7, // num reducers
                    5, // numInflaters
                    20, // num starting points
-                   100 // max points
+                   200 // max points
            ));
            levels.add(new Level(
                    "Level 3", // name
@@ -241,7 +241,7 @@ public class DatabaseConnector
                    6, // num reducers
                    6, // numInflaters
                    20, // num starting points
-                   100 // max points
+                   300 // max points
            ));
            levels.add(new Level(
                    "Level 4", // name
@@ -253,7 +253,7 @@ public class DatabaseConnector
                    5, // num reducers
                    7, // numInflaters
                    20, // num starting points
-                   100 // max points
+                   400 // max points
            ));
            levels.add(new Level(
                    "Level 5", // name
@@ -265,7 +265,7 @@ public class DatabaseConnector
                    4, // num reducers
                    8, // numInflaters
                    20, // num starting points
-                   100 // max points
+                   500 // max points
            ));
 
 
