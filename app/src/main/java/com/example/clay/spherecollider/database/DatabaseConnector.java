@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.clay.spherecollider.Level;
+import com.example.clay.spherecollider.view.level.Level;
 
 import java.util.ArrayList;
 import java.util.HashMap;
