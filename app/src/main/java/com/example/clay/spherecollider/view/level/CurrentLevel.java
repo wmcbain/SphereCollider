@@ -1,4 +1,4 @@
-package com.example.clay.spherecollider;
+package com.example.clay.spherecollider.view.level;
 
 import android.content.Context;
 

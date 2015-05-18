@@ -1,6 +1,4 @@
-package com.example.clay.spherecollider;
-
-import java.util.ArrayList;
+package com.example.clay.spherecollider.view.level;
 
 /**
  * Created by Clay on 4/11/2015.

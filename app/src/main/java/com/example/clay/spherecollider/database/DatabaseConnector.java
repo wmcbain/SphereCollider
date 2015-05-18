@@ -1,6 +1,6 @@
 // DatabaseConnector.java
 // Provides easy connection and creation of UserContacts database.
-package com.example.clay.spherecollider;
+package com.example.clay.spherecollider.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.example.clay.spherecollider.Level;
 
 import java.util.ArrayList;
 import java.util.HashMap;
