@@ -34,9 +34,9 @@ public class SphereCollider extends Activity {
         Drawable deflaterDrawable = findViewById(R.id.deflater).getBackground();
         Drawable inflaterDrawable = findViewById(R.id.inflater).getBackground();
 
-        ballDrawable.setColorFilter(Color.parseColor("#2ecc71"), mode);
-        deflaterDrawable.setColorFilter(Color.parseColor("#e74c3c"), mode);
-        inflaterDrawable.setColorFilter(Color.parseColor("#34495e"), mode);
+        ballDrawable.setColorFilter(Color.parseColor("#ff7935"), mode);
+        deflaterDrawable.setColorFilter(Color.parseColor("#dd2ea8"), mode);
+        inflaterDrawable.setColorFilter(Color.parseColor("#2dd2d7"), mode);
     }
 
 

@@ -140,7 +140,10 @@ public class CustomModal {
 
                 // get next level info
                 GameMediator gameMediator = GameMediator.getInstance();
+                System.out.println("LEVEL ID IN NEXT LEVEL BTN: " + gameMediator.getLevelId());
                 gameMediator.setLevelId(gameMediator.getLevelId() + 1);
+                System.out.println("LEVEL ID IN NEXT LEVEL BTN: " + gameMediator.getLevelId());
+                System.out.println("LEVEL ID NEXT IN NEXT LEVEL BTN: " + gameMediator.getLevelId() + 1);
 
                 Intent startBallGame = new Intent(context, SphereCollider.class);
                 ((Activity)context).finish();

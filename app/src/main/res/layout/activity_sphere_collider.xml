@@ -27,11 +27,11 @@
             android:layout_width="200dp"
             android:background="@drawable/legend_circle"
             android:id="@+id/inflater"
-            android:layout_above="@+id/btnTestPauseMenu"
-            android:layout_alignRight="@+id/btnTestPauseMenu"
-            android:layout_alignEnd="@+id/btnTestPauseMenu"
-            android:layout_marginRight="61dp"
-            android:layout_marginEnd="61dp" />
+            android:layout_alignBottom="@+id/deflater"
+            android:layout_alignLeft="@+id/txtViewAppName"
+            android:layout_alignStart="@+id/txtViewAppName"
+            android:layout_marginLeft="97dp"
+            android:layout_marginStart="97dp" />
 
         <View
             android:layout_height="100dp"
@@ -52,19 +52,6 @@
             android:textSize="50sp"
             android:layout_gravity="center_horizontal" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_pause_menu"
-            android:id="@+id/btnTestPauseMenu"
-            android:background="@drawable/btn"
-            android:textColor="#fff"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:layout_below="@+id/deflater"
-            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
     <LinearLayout
@@ -86,6 +73,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="40dp"
             android:layout_margin="10dp" />-->
+
+
 
         <Button
             android:layout_width="wrap_content"
@@ -118,6 +107,21 @@
             android:paddingRight="40dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_pause_menu"
+            android:id="@+id/btnTestPauseMenu"
+            android:background="@drawable/btn"
+            android:textColor="#fff"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_below="@+id/deflater"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 
     <!--<Button
