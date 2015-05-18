@@ -97,7 +97,7 @@ public class BallGame extends Activity implements SensorEventListener {
 //                // showEndGameModal(3); // 3 = grew too large
 //            }
 //        }, 1000);
-        new UpdateLevelCompletedTask().execute(currentLevel.getLevelId());
+        new UpdateLevelCompletedTask().execute(currentLevel.getLevelId() + 1);
         showEndGameModal(1);
 
     }
