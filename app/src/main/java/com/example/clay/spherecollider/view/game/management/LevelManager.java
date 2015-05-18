@@ -58,8 +58,8 @@ public class LevelManager implements Observer {
     @Override
     public void update(Observable observable, Object data) {
 
-        if (gameBall.isDead()) gameMediator.getSurface().gameOver();
-        if (points.size() == 0) gameBall.setDead(true);
+        if (gameBall.isTooBig()) this.lost();
+        if (points.size() == 0) this.determineWin();
 
         // Check for ball intersections and deal with appropriately
         Iterator iterator = interactiveModels.iterator();
@@ -176,6 +176,21 @@ public class LevelManager implements Observer {
                 break;
         }
     }
+
+    public void lost() {
+        gameMediator.alertGameFinished(3, score);
+        gameMediator.getSurface().gameOver();
+    }
+
+    public void determineWin() {
+        if (((float)maxScore / (float)score) < 0.3f) {
+            gameMediator.alertGameFinished(2, score);
+        } else {
+            gameMediator.alertGameFinished(1, score);
+        }
+        gameMediator.getSurface().gameOver();
+    }
+
     /**
      * Removes the Inflator from the manager
      * @param inflator

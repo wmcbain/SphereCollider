@@ -1,9 +1,11 @@
 package com.example.clay.spherecollider.view.game.management;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
 
+import com.example.clay.spherecollider.view.game.SphereCollider;
 import com.example.clay.spherecollider.view.game.models.Ball;
 import com.example.clay.spherecollider.view.game.models.Score;
 import com.example.clay.spherecollider.view.game.sensors.SensorHandler;
@@ -17,6 +19,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class GameMediator {
     private Context context;
+    private SphereCollider sphereCollider;
     private SensorHandler sensorHandler;
     private GameSurface surface;
 
@@ -89,6 +92,10 @@ public class GameMediator {
     public void setContext(Context context) {
         this.context = context;
         instance.getFrameBounds();
+    }
+
+    public void setSphereCollider(SphereCollider sphereCollider) {
+        this.sphereCollider = sphereCollider;
     }
 
     /**
@@ -407,5 +414,13 @@ public class GameMediator {
      */
     public void setSurface(GameSurface surface) {
         this.surface = surface;
+    }
+
+    /**
+     * Alerts the activity when the game is finished
+     * @param type
+     */
+    public void alertGameFinished(int type, int score) {
+        sphereCollider.levelFinished(type, score);
     }
 }
