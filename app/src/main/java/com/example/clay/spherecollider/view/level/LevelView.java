@@ -88,8 +88,8 @@ public class LevelView extends Activity {
 
 
         // map each contacts name to a TextView in the ListView layout
-        String[] from = new String[]{"levelName", "levelCompleted"};
-        int[] to = new int[]{R.id.txtLevelName, R.id.txtLevelCompleted};
+        String[] from = new String[]{"levelName", "levelUnlocked"};
+        int[] to = new int[]{R.id.txtLevelName, R.id.txtLevelUnlocked};
         levelAdapter = new SimpleCursorAdapter(
                 LevelView.this, R.layout.level_table_row, null, from, to, 0
         ){
@@ -97,7 +97,7 @@ public class LevelView extends Activity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView text = (TextView) view.findViewById(R.id.txtLevelName);
-                if( ((TextView)view.findViewById(R.id.txtLevelCompleted)).getText().equals("false") ) {
+                if( ((TextView)view.findViewById(R.id.txtLevelUnlocked)).getText().equals("false") ) {
 
                     if(((TextView)view.findViewById(R.id.txtLevelName)).getText().equals("Level 1")){
                         text.setTextColor(Color.WHITE);
@@ -210,6 +210,7 @@ public class LevelView extends Activity {
             gameMediator.setLevelName( result.getString( result.getColumnIndex("levelName") ) );
             gameMediator.setLevelBgImgSrc(result.getInt(result.getColumnIndex("levelBG")));
             gameMediator.setLevelCompleted( result.getString( result.getColumnIndex("levelCompleted") ) );
+            gameMediator.setLevelUnlocked( result.getString( result.getColumnIndex("levelUnlocked") ) );
 
             gameMediator.setBallColor(result.getString(result.getColumnIndex("ballColor")));
             gameMediator.setInflaterColor(result.getString(result.getColumnIndex("inflaterColor")));

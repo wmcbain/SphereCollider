@@ -66,14 +66,23 @@ public class DatabaseConnector
        ContentValues args = new ContentValues();
        args.put("levelCompleted", "true");
        open();
-       database.update("levels", args, "_id=?", new String[]{ String.valueOf(levelId) } );
+       database.update("levels", args, "_id=?", new String[]{String.valueOf(levelId)});
        close();
    }
+
+    //levelUnlocked
+    public void updateLevelUnlocked(long levelId) {
+        ContentValues args = new ContentValues();
+        args.put("levelUnlocked", "true");
+        open();
+        database.update("levels", args, "_id=?", new String[]{ String.valueOf(levelId) } );
+        close();
+    }
 
    // return a Cursor with all contact information in the database
    public Cursor getAllLevels()
    {
-      return database.query("levels", new String[] {"_id", "levelName", "levelCompleted"},
+      return database.query("levels", new String[] {"_id", "levelName", "levelUnlocked"},
          null, null, null, null, "levelName");
    } // end method getAllContacts
 
@@ -185,6 +194,7 @@ public class DatabaseConnector
             "levelName TEXT, " +
             "levelBG integer, " +
             "levelCompleted TEXT, " +
+            "levelUnlocked TEXT, " +
             "ballColor TEXT, " +
             "inflaterColor TEXT, " +
             "reducerColor TEXT, " +
@@ -212,6 +222,7 @@ public class DatabaseConnector
            levels.add(new Level(
                    "Level 1", // name
                    "false", // completed
+                   "true", // unlocked
                    R.drawable.level1, // background
                    "#ff7935", // ballColor
                    "#dd2ea8", // inflater
@@ -224,6 +235,7 @@ public class DatabaseConnector
            levels.add(new Level(
                    "Level 2", // name
                    "false", // completed
+                   "false", // unlocked
                    R.drawable.level2, // background
                    "#ff7137", // ballColor
                    "#2ed7c5", // inflater
@@ -236,6 +248,7 @@ public class DatabaseConnector
            levels.add(new Level(
                    "Level 3", // name
                    "false", // completed
+                   "false", // unlocked
                    R.drawable.level3, // background
                    "#50dc2f", // ballColor
                    "#f43445", // inflater
@@ -248,6 +261,7 @@ public class DatabaseConnector
            levels.add(new Level(
                    "Level 4", // name
                    "false", // completed
+                   "false", // unlocked
                    R.drawable.level4, // background
                    "#964cd7", // ballColor
                    "#33d7c6", // inflater
@@ -260,6 +274,7 @@ public class DatabaseConnector
            levels.add(new Level(
                    "Level 5", // name
                    "false", // completed
+                   "false", // unlocked
                    R.drawable.level5, // background
                    "#53dc34", // ballColor
                    "#db58bc", // inflater
@@ -274,12 +289,13 @@ public class DatabaseConnector
 
            for(Level level : levels) {
                String createQuery = "INSERT INTO levels" +
-                       "(levelName, levelBG, levelCompleted, ballColor, inflaterColor, reducerColor," +
+                       "(levelName, levelBG, levelCompleted, levelUnlocked, ballColor, inflaterColor, reducerColor," +
                        "numReducers, numInflaters, numPoints, maxPoints) VALUES" +
                        " ('" +
                        level.getLevelName() + "', '" +
                        level.getLevelBG() + "', '" +
                        level.getLevelCompleted() + "', '" +
+                       level.getLevelUnlocked() + "', '" +
                        level.getBallColor() + "', '" +
                        level.getInflaterColor() + "', '" +
                        level.getReducerColor() + "', '" +

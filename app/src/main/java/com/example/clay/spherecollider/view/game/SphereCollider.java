@@ -98,6 +98,24 @@ public class SphereCollider extends Activity {
     }
 
     /**
+     * Updates the level database
+     */
+    private class UpdateLevelUnlockedTask extends AsyncTask<Long, Object, Cursor> {
+        DatabaseConnector databaseConnector =
+                new DatabaseConnector(SphereCollider.this);
+
+        // perform the database access
+        @Override
+        protected Cursor doInBackground(Long... params) {
+            // get a cursor containing all data on given entry
+            System.out.println("Params: " + params[0]);
+            databaseConnector.updateLevelUnlocked(params[0]);
+            return null;
+        } // end method doInBackground
+
+    }
+
+    /**
      * Called when the level is finished
      *
      * @param type
@@ -132,6 +150,8 @@ public class SphereCollider extends Activity {
                 options.put("levelFailed", "false");
                 options.put("msg", "Good Job!");
                 new UpdateLevelCompletedTask().execute(gameMediator.getLevelId());
+                new UpdateLevelUnlockedTask().execute(gameMediator.getLevelId() + 1); // unlocks next level
+                new LoadLevelTask().execute(gameMediator.getLevelId() + 1); // gets the next level data
                 break;
             case 2:
                 options.put("title", "Level Failed");
@@ -145,5 +165,49 @@ public class SphereCollider extends Activity {
                 break;
         }
         CustomModal cm = new CustomModal(this, "level_complete", options);
+    }
+
+    // performs database query outside GUI thread
+    private class LoadLevelTask extends AsyncTask<Long, Object, Cursor>
+    {
+        DatabaseConnector databaseConnector =
+                new DatabaseConnector(SphereCollider.this);
+
+        // perform the database access
+        @Override
+        protected Cursor doInBackground(Long... params)
+        {
+            databaseConnector.open();
+
+            // get a cursor containing all data on given entry
+            return databaseConnector.getOneLevel(params[0]);
+        } // end method doInBackground
+
+        // use the Cursor returned from the doInBackground method
+        @Override
+        protected void onPostExecute(Cursor result)
+        {
+            super.onPostExecute(result);
+
+            result.moveToFirst(); // move to the first item
+
+            // get the column index for each data item
+            gameMediator.setLevelId(result.getLong(result.getColumnIndex("_id")));
+            gameMediator.setLevelName(result.getString(result.getColumnIndex("levelName")));
+            gameMediator.setLevelBgImgSrc(result.getInt(result.getColumnIndex("levelBG")));
+            gameMediator.setLevelCompleted(result.getString(result.getColumnIndex("levelCompleted")));
+            gameMediator.setLevelUnlocked(result.getString(result.getColumnIndex("levelUnlocked")));
+
+            gameMediator.setBallColor(result.getString(result.getColumnIndex("ballColor")));
+            gameMediator.setInflaterColor(result.getString(result.getColumnIndex("inflaterColor")));
+            gameMediator.setReducerColor(result.getString(result.getColumnIndex("reducerColor")));
+            gameMediator.setNumInflaters(result.getInt(result.getColumnIndex("numInflaters")));
+            gameMediator.setNumReducers(result.getInt(result.getColumnIndex("numReducers")));
+            gameMediator.setNumPoints(result.getInt(result.getColumnIndex("numPoints")));
+            gameMediator.setMaxPoints(result.getInt(result.getColumnIndex("maxPoints")));
+
+            result.close(); // close the result cursor
+            databaseConnector.close(); // close database connection
+        } // end method onPostExecute
     }
 }

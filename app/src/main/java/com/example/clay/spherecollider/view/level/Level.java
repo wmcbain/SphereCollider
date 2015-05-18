@@ -4,7 +4,7 @@ package com.example.clay.spherecollider.view.level;
  * Created by Clay on 4/11/2015.
  */
 public class Level {
-    private String levelName, levelCompleted;
+    private String levelName, levelCompleted, levelUnlocked;
     private int levelBG;
     private String ballColor, inflaterColor, reducerColor;
     private int numReducers, numInflaters, numPoints, maxPoints;
@@ -13,6 +13,7 @@ public class Level {
      * Default constructor
      * @param levelName
      * @param levelCompleted
+     * @param levelUnlocked
      * @param levelBG
      * @param ballColor
      * @param inflaterColor
@@ -22,11 +23,12 @@ public class Level {
      * @param numPoints
      * @param maxPoints
      */
-    public Level(String levelName, String levelCompleted, int levelBG,
+    public Level(String levelName, String levelCompleted, String levelUnlocked, int levelBG,
                  String ballColor, String inflaterColor, String reducerColor,
                  int numReducers, int numInflaters, int numPoints, int maxPoints) {
         this.levelName = levelName;
         this.levelCompleted = levelCompleted;
+        this.levelUnlocked = levelUnlocked;
         this.levelBG = levelBG;
         this.ballColor = ballColor;
         this.inflaterColor = inflaterColor;
@@ -115,5 +117,13 @@ public class Level {
 
     public void setMaxPoints(int maxPoints) {
         this.maxPoints = maxPoints;
+    }
+
+    public String getLevelUnlocked() {
+        return levelUnlocked;
+    }
+
+    public void setLevelUnlocked(String levelUnlocked) {
+        this.levelUnlocked = levelUnlocked;
     }
 }

@@ -34,7 +34,7 @@ public class GameMediator {
     private int levelBgImgSrc;
 
     private String levelName;
-    private String levelCompleted;
+    private String levelCompleted, levelUnlocked;
     private String ballColor, inflaterColor, reducerColor;
 
     private int xMax, yMax;
@@ -426,6 +426,13 @@ public class GameMediator {
         sphereCollider.levelFinished(type, score, percent);
     }
 
+    public String getLevelUnlocked() {
+        return levelUnlocked;
+    }
+
+    public void setLevelUnlocked(String levelUnlocked) {
+        this.levelUnlocked = levelUnlocked;
+    }
     /**
      * Gets the pause button
      * @return
