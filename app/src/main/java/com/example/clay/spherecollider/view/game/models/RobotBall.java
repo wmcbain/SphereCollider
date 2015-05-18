@@ -21,7 +21,7 @@ public class RobotBall implements GameModel, RandomizedModel {
 
     private int value, valueMax;
     private int circleX, circleY, radius;
-    private int size, originalSize, changeValue = 0;
+    private int size, originalSize, increaseValue = 0, decreaseValue = 0;
     private int xMax, yMax;
     private float xVelocity, yVelocity, frameTime;
     private float xPosition, yPosition;
@@ -133,7 +133,7 @@ public class RobotBall implements GameModel, RandomizedModel {
      * @param inflateValue
      */
     public void increaseSize(int inflateValue) {
-        changeValue = inflateValue;
+        increaseValue = inflateValue;
         increasing = true;
     }
 
@@ -142,7 +142,7 @@ public class RobotBall implements GameModel, RandomizedModel {
      * @param reduceValue
      */
     public void decreaseSize(int reduceValue) {
-        changeValue = reduceValue;
+        decreaseValue = reduceValue;
         decreasing = true;
     }
 
@@ -169,8 +169,8 @@ public class RobotBall implements GameModel, RandomizedModel {
         if (!destroying && valueMax < value) {
             size++;
             value++;
-            changeValue--;
-            if (changeValue == 0) increasing = false;
+            increaseValue--;
+            if (increaseValue == 0) increasing = false;
             this.setBounds(Math.round(xPosition), Math.round(yPosition));
         }
     }
@@ -179,14 +179,14 @@ public class RobotBall implements GameModel, RandomizedModel {
      * Decreases the bounds of the circle
      */
     private void decreaseBounds() {
-        if (!increasing && !destroying) {
+        if (!destroying) {
             if (size-- < originalSize) {
                 size = originalSize;
                 decreasing = false;
             }
             value--;
-            changeValue--;
-            if (changeValue == 0) decreasing = false;
+            decreaseValue--;
+            if (decreaseValue == 0) decreasing = false;
             this.setBounds(Math.round(xPosition), Math.round(yPosition));
         }
     }

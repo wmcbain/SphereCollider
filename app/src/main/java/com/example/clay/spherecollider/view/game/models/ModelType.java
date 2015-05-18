@@ -11,5 +11,5 @@ public enum ModelType {
     INFLATER,
     REDUCER,
     ATTACKER,
-    PAUSE_BTN
+    PAUSE
 }
