@@ -18,7 +18,7 @@ public class Score implements GameModel {
     private ModelType type;
 
     private int xMax, yMax;
-    private String scoreText;
+    private String scoreText = "";
     private Rect bounds;
 
     public Score() {

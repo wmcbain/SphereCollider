@@ -420,7 +420,7 @@ public class GameMediator {
      * Alerts the activity when the game is finished
      * @param type
      */
-    public void alertGameFinished(int type, int score) {
-        sphereCollider.levelFinished(type, score);
+    public void alertGameFinished(int type, int score, int percent) {
+        sphereCollider.levelFinished(type, score, percent);
     }
 }

@@ -178,17 +178,21 @@ public class LevelManager implements Observer {
     }
 
     public void lost() {
-        gameMediator.alertGameFinished(3, score);
+        int percent = Math.round((((float)score) / (float)maxScore) * 100f);
+        gameMediator.alertGameFinished(3, score, percent);
         gameMediator.getSurface().gameOver();
+        gameMediator.getSensorHandler().stopSensorListener();
     }
 
     public void determineWin() {
-        if (((float)maxScore / (float)score) < 0.3f) {
-            gameMediator.alertGameFinished(2, score);
+        int percent = Math.round((((float)score) / (float)maxScore) * 100f);
+        if (percent < 30) {
+            gameMediator.alertGameFinished(2, score, percent);
         } else {
-            gameMediator.alertGameFinished(1, score);
+            gameMediator.alertGameFinished(1, score, percent);
         }
         gameMediator.getSurface().gameOver();
+        gameMediator.getSensorHandler().stopSensorListener();
     }
 
     /**

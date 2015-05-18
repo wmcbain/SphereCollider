@@ -102,12 +102,12 @@ public class SphereCollider extends Activity {
      * @param type
      * @param score
      */
-    public void levelFinished(final int type, final int score) {
+    public void levelFinished(final int type, final int score, final int percent) {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                showEndGameModal(type, score);
+                showEndGameModal(type, score, percent);
             }
         }, 500);
     }
@@ -117,7 +117,7 @@ public class SphereCollider extends Activity {
      *
      * @param winLossType : ( 1 = completed and won, 2 = no balls left, 3 = got too big )
      */
-    private void showEndGameModal(int winLossType, int score) {
+    private void showEndGameModal(int winLossType, int score, int percent) {
 
         HashMap<String, String> options = new HashMap<String, String>();
         options.put("score", score + "");
