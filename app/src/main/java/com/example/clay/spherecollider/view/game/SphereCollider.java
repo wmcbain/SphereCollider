@@ -90,6 +90,7 @@ public class SphereCollider extends Activity {
         @Override
         protected Cursor doInBackground(Long... params) {
             // get a cursor containing all data on given entry
+            System.out.println("Params: " + params[0]);
             databaseConnector.updateLevelCompleted(params[0]);
             return null;
         } // end method doInBackground

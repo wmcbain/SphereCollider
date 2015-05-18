@@ -126,7 +126,6 @@ public class LevelView extends Activity {
 
         //create a new GetContactTask and execute
         new GetLevelsTask().execute((Object[])null);
-        levelSelected = false;
         // need to call draw levelView Legend - set all to white as default
         setLevelLegendView("#FFFFFF", "#FFFFFF", "#FFFFFF");
 //        ((ImageView)findViewById(R.id.levelImage)).setImageResource(R.drawable.no_level); // old way using image

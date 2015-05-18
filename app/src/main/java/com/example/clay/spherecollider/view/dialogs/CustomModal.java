@@ -144,7 +144,6 @@ public class CustomModal {
 
                 Intent startBallGame = new Intent(context, SphereCollider.class);
                 ((Activity)context).finish();
-
                 context.startActivity(startBallGame);
 
                 d.dismiss();

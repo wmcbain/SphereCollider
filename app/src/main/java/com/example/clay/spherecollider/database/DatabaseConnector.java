@@ -53,8 +53,8 @@ public class DatabaseConnector
    public void insertLevel(String levelName, int levelBgImgsrc)
    {
       ContentValues newLevel = new ContentValues();
-      newLevel.put("levelname", levelName);
-      newLevel.put("levelbgimgsrc", levelBgImgsrc);
+      newLevel.put("levelName", levelName);
+      newLevel.put("levelBG", levelBgImgsrc);
 
       open(); // open the database
       database.insert("levels", null, newLevel);
@@ -64,7 +64,7 @@ public class DatabaseConnector
 
    public void updateLevelCompleted(long levelId) {
        ContentValues args = new ContentValues();
-       args.put("levelcompleted", "true");
+       args.put("levelCompleted", "true");
        open();
        database.update("levels", args, "_id=?", new String[]{ String.valueOf(levelId) } );
        close();
@@ -73,8 +73,8 @@ public class DatabaseConnector
    // return a Cursor with all contact information in the database
    public Cursor getAllLevels()
    {
-      return database.query("levels", new String[] {"_id", "levelname", "levelcompleted"},
-         null, null, null, null, "levelname");
+      return database.query("levels", new String[] {"_id", "levelName", "levelCompleted"},
+         null, null, null, null, "levelName");
    } // end method getAllContacts
 
 
@@ -104,10 +104,10 @@ public class DatabaseConnector
            while (it.hasNext()) {
                Map.Entry pair = (Map.Entry)it.next();
                System.out.println(pair.getKey() + " = " + pair.getValue());
-               if(pair.getKey() == "levelname"){
+               if(pair.getKey() == "levelName"){
                    levelName = pair.getValue().toString();
                }
-               if(pair.getKey() == "levelbgimgsrc"){
+               if(pair.getKey() == "levelBG"){
                    levelBgImgsrc = (int)pair.getValue();
                }
                it.remove(); // avoids a ConcurrentModificationException
