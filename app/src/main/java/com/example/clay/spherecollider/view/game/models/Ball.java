@@ -34,7 +34,7 @@ public class Ball implements GameModel, Observer {
             decreasing = false,
             isWarning = false,
             showingRed = false,
-            isDead = false;
+            tooBig = false;
 
     private String color;
 
@@ -226,7 +226,7 @@ public class Ball implements GameModel, Observer {
 
     private void checkSize() {
         if (size > ballMaxSize) {
-            isDead = true;
+            tooBig = true;
         }
         else if (size > ballWarning) {
             isWarning = true;
@@ -237,11 +237,7 @@ public class Ball implements GameModel, Observer {
         }
     }
 
-    public boolean isDead() {
-        return isDead;
-    }
-
-    public void setDead(boolean isDead) {
-        this.isDead = isDead;
+    public boolean isTooBig() {
+        return tooBig;
     }
 }

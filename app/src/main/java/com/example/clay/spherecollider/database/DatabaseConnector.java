@@ -65,7 +65,9 @@ public class DatabaseConnector
    public void updateLevelCompleted(long levelId) {
        ContentValues args = new ContentValues();
        args.put("levelcompleted", "true");
+       open();
        database.update("levels", args, "_id=?", new String[]{ String.valueOf(levelId) } );
+       close();
    }
 
    // return a Cursor with all contact information in the database
