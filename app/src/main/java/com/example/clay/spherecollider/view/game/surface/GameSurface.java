@@ -1,4 +1,4 @@
-package com.example.clay.spherecollider.view.game.view;
+package com.example.clay.spherecollider.view.game.surface;
 
 import android.content.Context;
 import android.graphics.Canvas;

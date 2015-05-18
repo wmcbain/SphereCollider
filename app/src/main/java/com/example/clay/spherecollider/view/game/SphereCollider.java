@@ -1,20 +1,44 @@
 package com.example.clay.spherecollider.view.game;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.drawable.ShapeDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 
-import com.example.clay.spherecollider.R;
+import com.example.clay.spherecollider.database.DatabaseConnector;
+import com.example.clay.spherecollider.view.dialogs.CustomModal;
 import com.example.clay.spherecollider.view.game.management.GameMediator;
 import com.example.clay.spherecollider.view.game.sensors.SensorHandler;
 import com.example.clay.spherecollider.view.game.view.GameSurface;
+import com.example.clay.spherecollider.view.level.CurrentLevel;
+import com.example.clay.spherecollider.view.util.AudioPlayer;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
-public class GameLevelTest extends Activity {
+public class SphereCollider extends Activity {
     private GameSurface gameSurface;
     private SensorHandler sensorHandler;
 
@@ -61,33 +85,6 @@ public class GameLevelTest extends Activity {
         // Unregister the listener
         sensorHandler.stopSensorListener();
         super.onStop();
-    }
-
-    /**
-     * Executes when the options menu is created
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        return true;
-    }
-
-    /**
-     * Eexecutes when the options menu item is selected
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**
