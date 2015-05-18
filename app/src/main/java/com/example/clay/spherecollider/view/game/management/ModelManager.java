@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import com.example.clay.spherecollider.view.game.models.Background;
 import com.example.clay.spherecollider.view.game.models.Ball;
 import com.example.clay.spherecollider.view.game.models.Inflater;
+import com.example.clay.spherecollider.view.game.models.Pause;
 import com.example.clay.spherecollider.view.game.models.Point;
 import com.example.clay.spherecollider.view.game.models.Reducer;
 import com.example.clay.spherecollider.view.game.models.Score;
@@ -76,6 +77,7 @@ public class ModelManager {
         }
         models.add(new Ball(ballStartingSize, ballColor));
         models.add(new Score());
+        models.add(new Pause());
     }
 
     /**

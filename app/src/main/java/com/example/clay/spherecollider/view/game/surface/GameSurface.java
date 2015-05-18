@@ -4,15 +4,19 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 
+import com.example.clay.spherecollider.view.dialogs.CustomModal;
 import com.example.clay.spherecollider.view.game.management.GameLoop;
 import com.example.clay.spherecollider.view.game.management.GameMediator;
 import com.example.clay.spherecollider.view.game.management.LevelManager;
 import com.example.clay.spherecollider.view.game.models.Ball;
 import com.example.clay.spherecollider.view.game.models.GameModel;
+import com.example.clay.spherecollider.view.game.models.Pause;
 import com.example.clay.spherecollider.view.game.models.Score;
 
 import java.util.Iterator;
@@ -21,7 +25,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Responsible for running the game off the main thread
  */
-public class GameSurface extends SurfaceView {
+public class GameSurface extends SurfaceView implements View.OnTouchListener {
     private GameMediator gameMediator;
     private SurfaceHolder holder;
     private LevelManager levelManager;
@@ -29,6 +33,8 @@ public class GameSurface extends SurfaceView {
     private GameLoop gameLoop;
     private Ball gameBall;
     private Score gameScore;
+    private Pause pause;
+    private boolean isPaused = false;
 
     /**
      * Default constructor
@@ -44,9 +50,11 @@ public class GameSurface extends SurfaceView {
         this.models = gameMediator.getModels();
         this.gameBall = gameMediator.getGameBall();
         this.gameScore = gameMediator.getGameScore();
+        this.pause = gameMediator.getPause();
         this.holder = getHolder();
 
         gameMediator.setSurface(this);
+        setOnTouchListener(GameSurface.this);
 
         holder.addCallback(new SurfaceHolder.Callback() {
             @Override
@@ -87,9 +95,33 @@ public class GameSurface extends SurfaceView {
         }
         gameBall.render(canvas);
         gameScore.render(canvas);
+        pause.render(canvas);
     }
 
     public void gameOver() {
         gameLoop.setRunning(false);
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        System.out.println("TOUCH");
+        Pause pause = gameMediator.getPause();
+        if (!isPaused && pause.getBounds().contains(Math.round(motionEvent.getX()), Math.round(motionEvent.getY()))) {
+            CustomModal cm = new CustomModal(gameMediator.getContext(), "pause_menu", null);
+            pause();
+        }
+        return true;
+    }
+
+    public void pause() {
+        isPaused = true;
+        gameMediator.getSensorHandler().stopSensorListener();
+        gameLoop.setPaused(true);
+    }
+
+    public void unPause() {
+        isPaused = false;
+        gameMediator.getSensorHandler().startSensorListener();
+        gameLoop.setPaused(false);
     }
 }

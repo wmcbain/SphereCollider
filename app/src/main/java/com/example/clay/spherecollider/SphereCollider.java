@@ -70,19 +70,6 @@ public class SphereCollider extends Activity {
             }
 
         });
-        // TO SHOW A PAUSE MENU MODAL
-        findViewById(R.id.btnTestPauseMenu).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                HashMap<String, String> options = new HashMap<String, String>();
-                // options:
-                CustomModal cm = new CustomModal(SphereCollider.this, "pause_menu", options);
-            }
-
-        });
-
 
     }
 

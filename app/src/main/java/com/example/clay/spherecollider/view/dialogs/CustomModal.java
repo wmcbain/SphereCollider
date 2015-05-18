@@ -77,9 +77,8 @@ public class CustomModal {
 
         d.findViewById(R.id.btnContinue).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                // call your CONTINUE/PLAY/UNPAUSE Method here
                 d.dismiss();
+                GameMediator.getInstance().getSurface().unPause();
             }
         });
 

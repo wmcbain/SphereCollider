@@ -26,7 +26,7 @@ public class Ball implements GameModel, Observer {
 
     private float xPosition, pitch , xVelocity = 0.0f;
     private float yPosition, roll , yVelocity = 0.0f;
-    private int changeValue = 0;
+    private int decreaseValue = 0, increaseValue;
     private int xMax, yMax;
     private int ballMaxSize, ballWarning;
     private long lastAlert;
@@ -153,7 +153,7 @@ public class Ball implements GameModel, Observer {
      *
      */
     public void increaseSize(int inflateValue) {
-        changeValue = inflateValue;
+        increaseValue = inflateValue;
         increasing = true;
     }
 
@@ -163,7 +163,7 @@ public class Ball implements GameModel, Observer {
      * @param dec
      */
     public void decreaseSize(int reduceValue) {
-        changeValue = reduceValue;
+        decreaseValue = reduceValue;
         decreasing = true;
     }
 
@@ -193,8 +193,8 @@ public class Ball implements GameModel, Observer {
 
     private void increaseBounds() {
         size++;
-        changeValue--;
-        if (changeValue == 0) increasing = false;
+        increaseValue--;
+        if (increaseValue == 0) increasing = false;
         setMax();
         this.setBounds(Math.round(xPosition), Math.round(yPosition));
     }
@@ -205,8 +205,8 @@ public class Ball implements GameModel, Observer {
             size = originalSize;
             decreasing = false;
         }
-        changeValue--;
-        if (changeValue == 0) decreasing = false;
+        decreaseValue--;
+        if (decreaseValue == 0) decreasing = false;
         setMax();
         this.setBounds(Math.round(xPosition), Math.round(yPosition));
     }

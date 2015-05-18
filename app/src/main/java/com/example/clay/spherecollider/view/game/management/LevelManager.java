@@ -7,6 +7,7 @@ import com.example.clay.spherecollider.view.game.models.Ball;
 import com.example.clay.spherecollider.view.game.models.GameModel;
 import com.example.clay.spherecollider.view.game.models.Inflater;
 import com.example.clay.spherecollider.view.game.models.ModelType;
+import com.example.clay.spherecollider.view.game.models.Pause;
 import com.example.clay.spherecollider.view.game.models.Point;
 import com.example.clay.spherecollider.view.game.models.Reducer;
 import com.example.clay.spherecollider.view.game.models.Score;
@@ -244,7 +245,11 @@ public class LevelManager implements Observer {
             } else if (model.getType() == ModelType.SCORE) {
                 gameScore = (Score)model;
                 gameMediator.setGameScore((Score)model);
-            } else if (model.getType() == ModelType.INFLATER) {
+            } else if (model.getType() == ModelType.PAUSE) {
+                gameMediator.setPause((Pause)model);
+                models.remove(model);
+            }
+            else if (model.getType() == ModelType.INFLATER) {
                 inflaters.add(model);
             } else if (model.getType() == ModelType.REDUCER) {
                 reducers.add(model);

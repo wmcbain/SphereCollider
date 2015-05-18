@@ -13,16 +13,17 @@ import com.example.clay.spherecollider.view.game.util.PaintUtility;
 /**
  * Class for pause button drawn on canvas on surface view
  */
-public class PauseBtn implements GameModel {
+public class Pause implements GameModel {
     private GameMediator gameMediator;
     private Paint backgroundPaint, textPaint;
     private ModelType type;
 
     private int xMax, yMax;
+    private int circleX, circleY, radius;
     private Rect bounds;
 
-    public PauseBtn() {
-        type = ModelType.PAUSE_BTN;
+    public Pause() {
+        type = ModelType.PAUSE;
         gameMediator = GameMediator.getInstance();
         xMax = gameMediator.getXMax();
         yMax = gameMediator.getYMax();
@@ -32,8 +33,8 @@ public class PauseBtn implements GameModel {
 
     @Override
     public void render(Canvas canvas) {
-        canvas.drawRect(bounds, backgroundPaint);
-        canvas.drawText("l l", xMax - 120, 30, textPaint); // "l l" => looks like pause button sort of.
+        canvas.drawCircle(circleX, circleY, radius, backgroundPaint);
+        canvas.drawText("| |", 38, yMax - 40, textPaint); // "l l" => looks like pause button sort of.
                                                            // IDK you can think of a better idea if you want
     }
 
@@ -47,11 +48,11 @@ public class PauseBtn implements GameModel {
         return type;
     }
 
-    // i want this to be on the other side of the screen (top left corner)
-    // OR OTHER OPTION : put score on top left and this pause button on the top right corner
-    // ( Doing so will conform to other Games standards
     private void initializeRect() {
-        bounds = new Rect(xMax - 140, 0, xMax, 50);
+        bounds = new Rect(20, yMax - 70, 70, yMax - 20);
+        radius = (bounds.right - bounds.left) / 2;
+        circleX = bounds.left + radius;
+        circleY = bounds.top + radius;
     }
 
     private void initializePaint() {
@@ -60,14 +61,4 @@ public class PauseBtn implements GameModel {
         Typeface typeface = Typeface.create("Helvetica", Typeface.BOLD);
         textPaint.setTypeface(typeface);
     }
-
-    /*
-
-    CODE FOR CALLING PAUSE BUTTON MODAL
-
-
-
-
-     */
-
 }

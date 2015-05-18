@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 
 import com.example.clay.spherecollider.view.game.SphereCollider;
 import com.example.clay.spherecollider.view.game.models.Ball;
+import com.example.clay.spherecollider.view.game.models.Pause;
 import com.example.clay.spherecollider.view.game.models.Score;
 import com.example.clay.spherecollider.view.game.sensors.SensorHandler;
 import com.example.clay.spherecollider.view.game.surface.GameSurface;
@@ -27,6 +28,7 @@ public class GameMediator {
     private ConcurrentLinkedQueue models;
     private Ball gameBall;
     private Score gameScore;
+    private Pause pause;
 
     private long levelId;
     private int levelBgImgSrc;
@@ -430,5 +432,20 @@ public class GameMediator {
 
     public void setLevelUnlocked(String levelUnlocked) {
         this.levelUnlocked = levelUnlocked;
+    }
+    /**
+     * Gets the pause button
+     * @return
+     */
+    public Pause getPause() {
+        return pause;
+    }
+
+    /**
+     * Sets the pause button
+     * @param pause
+     */
+    public void setPause(Pause pause) {
+        this.pause = pause;
     }
 }
