@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,18 +21,55 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:padding="20dp">
 
-        <TableLayout
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:layout_margin="20dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Coins Collected"
+                    android:id="@+id/textView"
+                    android:textColor="#ffffff"
+                    android:gravity="center" />
+
+                <com.github.lzyzsd.circleprogress.DonutProgress
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/donut_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    custom:donut_unfinished_stroke_width="5dp"
+                    custom:donut_finished_stroke_width="10dp"
+                    custom:donut_progress="0"
+                    custom:donut_finished_color="#FFFFFF"
+                    custom:donut_text_color="#FFFFFF"
+                    android:layout_marginBottom="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewMsg"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -40,52 +79,42 @@
                     android:layout_column="1"
                     android:layout_weight="1"
                     android:textColor="#ffffff"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/level_time_completed"
-                    android:id="@+id/txtViewTime"
-                    android:layout_column="2"
-                    android:layout_weight="1"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="10dp" />
-            </TableRow>
-        </TableLayout>
+        <!--<ProgressBar-->
+            <!--style="?android:attr/progressBarStyleHorizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:indeterminate="false"-->
+            <!--android:max="100"-->
+            <!--android:progress="100"-->
+            <!--android:progressDrawable="@drawable/circle_progress_background"-->
+            <!--android:id="@+id/progressBarPoints"-->
+            <!--android:layout_weight="1" />-->
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:indeterminate="false"
-            android:max="100"
-            android:progress="100"
-            android:progressDrawable="@drawable/circle_progress_background"
-            android:id="@+id/progressBarPoints" />
-
-        <ProgressBar
-            android:id="@+id/circle_progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:max="100"
-            android:rotation="-90"
-            android:indeterminate="false"
-            android:progressDrawable="@drawable/circle_progress_foreground" />
+        <!--<ProgressBar-->
+            <!--android:id="@+id/circle_progress_bar"-->
+            <!--style="?android:attr/progressBarStyleHorizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:max="100"-->
+            <!--android:rotation="-90"-->
+            <!--android:indeterminate="false"-->
+            <!--android:progressDrawable="@drawable/circle_progress_foreground" />-->
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quit"
+                android:text="@string/quit"
                 android:id="@+id/btnClose"
                 android:layout_weight="1"
                 android:background="@drawable/btn"
@@ -100,7 +129,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Levels"
+                android:text="@string/levels_btn"
                 android:id="@+id/btnShowLevels"
                 android:layout_weight="1"
                 android:background="@drawable/btn"
@@ -115,7 +144,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Next Level"
+                android:text="@string/next_level_btn"
                 android:id="@+id/btnNextLevel"
                 android:layout_weight="1"
                 android:background="@drawable/btn"
@@ -128,6 +157,7 @@
                 android:paddingBottom="10dp" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

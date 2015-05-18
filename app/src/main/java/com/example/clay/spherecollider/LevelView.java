@@ -88,8 +88,9 @@ public class LevelView extends Activity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
+                TextView text = (TextView) view.findViewById(R.id.txtLevelName);
                 if( ((TextView)view.findViewById(R.id.txtLevelCompleted)).getText().equals("false") ) {
-                    TextView text = (TextView) view.findViewById(R.id.txtLevelName);
+
                     if(((TextView)view.findViewById(R.id.txtLevelName)).getText().equals("Level 1")){
                         text.setTextColor(Color.WHITE);
                         view.setEnabled(true);
@@ -97,6 +98,9 @@ public class LevelView extends Activity {
                         text.setTextColor(Color.GRAY);
                         view.setEnabled(false);
                     }
+                }else{
+                    text.setTextColor(Color.WHITE);
+                    view.setEnabled(true);
                 }
 
 

@@ -59,6 +59,12 @@ public class DatabaseConnector
    } // end method insertLevel
 
 
+   public void updateLevelCompleted(long levelId) {
+       ContentValues args = new ContentValues();
+       args.put("levelcompleted", "true");
+       database.update("levels", args, "_id=?", new String[]{ String.valueOf(levelId) } );
+   }
+
    // return a Cursor with all contact information in the database
    public Cursor getAllLevels()
    {

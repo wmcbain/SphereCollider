@@ -19,6 +19,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -81,6 +82,24 @@ public class BallGame extends Activity implements SensorEventListener {
         windowWidth = displaymetrics.widthPixels;
 
         ap = new AudioPlayer(this);
+
+//        // temp code
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                // ONLY EXCUTE THIS IF THEY COMPLETED THE LEVEL!!
+//                // updates level completed in DB - needed for rows in level selection activity - LevelView
+//                new UpdateLevelCompletedTask().execute(currentLevel.getLevelId());
+//                showEndGameModal(1); // 1 = level completed
+//                // MAKE SURE IF YOU DO THE FOLLOWING: ( DONT RUN UpdateLevelCompletedTask() )
+//                // showEndGameModal(2); // 2 = ran out of balls
+//                // showEndGameModal(3); // 3 = grew too large
+//            }
+//        }, 1000);
+        new UpdateLevelCompletedTask().execute(currentLevel.getLevelId());
+        showEndGameModal(1);
+
     }
 
     public void initializeLevel(){
@@ -233,6 +252,27 @@ public class BallGame extends Activity implements SensorEventListener {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
+
+
+    // performs database query outside GUI thread
+    private class UpdateLevelCompletedTask extends AsyncTask<Long, Object, Cursor>
+    {
+        DatabaseConnector databaseConnector =
+                new DatabaseConnector(BallGame.this);
+
+        // perform the database access
+        @Override
+        protected Cursor doInBackground(Long... params)
+        {
+            databaseConnector.open();
+
+            // get a cursor containing all data on given entry
+            databaseConnector.updateLevelCompleted(params[0]);
+            return null;
+        } // end method doInBackground
+
+    }
+
     // performs database query outside GUI thread
     private class LoadLevelTask extends AsyncTask<Long, Object, Cursor>
     {
@@ -298,18 +338,22 @@ public class BallGame extends Activity implements SensorEventListener {
 
         HashMap<String, String> options = new HashMap<String, String>();
         options.put("score", totalLevelCoinCount+"");
-//        options.put("time", "still need timer");
 
         // pass in the total amount of points the user collected per  value below
-//        options.put("scoreProgressVal", getScorePercent(totalPointsCollected)+"");
-        options.put("scoreProgressVal", 87+"");
+        options.put("scoreProgressVal", 87+""); // being parsed as int in CustomModal class
 
         switch(winLossType){
             case 1:
+                options.put("title", "Level Complete");
+                options.put("msg", "Good Job!");
                 break;
             case 2:
+                options.put("title", "Level Failed");
+                options.put("msg", "You ran out of Spheres to collect to score points.");
                 break;
             case 3:
+                options.put("title", "Level Failed");
+                options.put("msg", "You grew too large.");
                 break;
         }
 

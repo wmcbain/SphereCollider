@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.github.lzyzsd.circleprogress.DonutProgress;
+
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Clay on 4/25/2015.
@@ -18,6 +22,7 @@ public class CustomModal {
 
     public final Dialog d;
     private Context context;
+    private DonutProgress donutProgress;
 
     public CustomModal(final Context context, String type, HashMap<String, String> options){
         this.context = context;
@@ -58,9 +63,16 @@ public class CustomModal {
 
         ((TextView)d.findViewById(R.id.txtViewScore)).setText(String.format(context.getResources().getString(R.string.level_score), options.get("score")));
         ((TextView)d.findViewById(R.id.textViewModalTitle)).setText( options.get("title") );
-//        ((TextView)d.findViewById(R.id.txtViewTime)).setText(String.format(context.getResources().getString(R.string.level_time_completed), options.get("time")));
+        ((TextView)d.findViewById(R.id.textViewMsg)).setText( options.get("msg"));
 
-        ((ProgressBar)d.findViewById(R.id.progressBarPoints)).setProgress(Integer.parseInt( options.get("scoreProgressVal") ));
+        // OTHER COOL PROGRESS BARS
+        // General: https://android-arsenal.com/tag/76
+        // https://android-arsenal.com/details/1/1512
+
+        // Progress Bar code below was used from the following site
+        // https://github.com/lzyzsd/CircleProgress/blob/master/example/src/main/res/layout/activity_my.xml
+        donutProgress = (DonutProgress) d.findViewById(R.id.donut_progress);
+        donutProgress.setProgress(Integer.parseInt( options.get("scoreProgressVal") ));
 
         Button btnShowLevels = (Button)d.findViewById(R.id.btnShowLevels);
         btnShowLevels.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +86,10 @@ public class CustomModal {
         Button btnNextLevel = (Button)d.findViewById(R.id.btnNextLevel);
         btnNextLevel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // need to figure out how to pass in function here
-
                 // clear current game - Wyatt probably has a reset method or something to go here
+                // THIS STILL NEEDS TO BE DONE!
 
                 // get next level info
-//                System.out.println("getCurrentLevelID:::" + ((BallGame)context).getCurrentLevelId() + 1);
-//                ((BallGame)context).setCurrentLevelId(((BallGame) context).getCurrentLevelId() + 1);
-
                 CurrentLevel currentLevel = CurrentLevel.getInstance(context);
                 currentLevel.setLevelId(currentLevel.getLevelId() + 1);
 

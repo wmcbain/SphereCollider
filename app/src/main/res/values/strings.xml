@@ -22,4 +22,7 @@
     <string name="app_name_str">Sphere Collider</string>
     <string name="artifacts_legend">Game Artifacts Legend</string>
     <string name="select_level">Select a level</string>
+    <string name="quit">Quit</string>
+    <string name="levels_btn">Levels</string>
+    <string name="next_level_btn">Next Level</string>
 </resources>
