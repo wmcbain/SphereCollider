@@ -42,6 +42,9 @@ public class CustomModal {
             case "info":
                 setUpInfoModal(context, options);
                 break;
+            case "pause_menu":
+                setUpPauseMenuModal(context, options);
+                break;
             case "alert":
                 break;
         }
@@ -58,6 +61,40 @@ public class CustomModal {
         d.show(); //show modal
     }
 
+    private void setUpPauseMenuModal(final Context context, HashMap<String, String> options) {
+        d.setContentView(R.layout.pause_menu_modal_content);
+
+        Button btnShowLevels = (Button)d.findViewById(R.id.btnShowLevels);
+        btnShowLevels.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // launch levelView
+                Intent viewLevels = new Intent(context, LevelView.class);
+                context.startActivity(viewLevels);
+                d.dismiss();
+            }
+        });
+
+        d.findViewById(R.id.btnContinue).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // call your CONTINUE/PLAY/UNPAUSE Method here
+                d.dismiss();
+            }
+        });
+
+        d.findViewById(R.id.btnRetryLevel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent relaunchGameAsRetry = new Intent(context, SphereCollider.class);
+                context.startActivity(relaunchGameAsRetry);
+                d.dismiss();
+            }
+        });
+
+        d.show(); //show modal
+
+    }
+
 
     public void setUpLevelCompleteModal(final Context context, HashMap<String, String> options){
         d.setContentView(R.layout.level_complete_modal_content);
@@ -66,6 +103,15 @@ public class CustomModal {
         ((TextView)d.findViewById(R.id.textViewModalTitle)).setText( options.get("title") );
         ((TextView)d.findViewById(R.id.textViewMsg)).setText( options.get("msg"));
 
+        // Handling hide/show buttons when completing or failing level
+        if(options.get("levelFailed").equals("true")){
+            ((Button)d.findViewById(R.id.btnNextLevel)).setVisibility(View.GONE);
+            ((Button)d.findViewById(R.id.btnRetryLevel)).setVisibility(View.VISIBLE);
+
+        }else{
+            ((Button)d.findViewById(R.id.btnNextLevel)).setVisibility(View.VISIBLE);
+            ((Button)d.findViewById(R.id.btnRetryLevel)).setVisibility(View.GONE);
+        }
         // OTHER COOL PROGRESS BARS
         // General: https://android-arsenal.com/tag/76
         // https://android-arsenal.com/details/1/1512
@@ -84,6 +130,7 @@ public class CustomModal {
                 d.dismiss();
             }
         });
+
         Button btnNextLevel = (Button)d.findViewById(R.id.btnNextLevel);
         btnNextLevel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -97,6 +144,15 @@ public class CustomModal {
                 Intent startBallGame = new Intent(context, SphereCollider.class);
                 context.startActivity(startBallGame);
 
+                d.dismiss();
+            }
+        });
+
+        d.findViewById(R.id.btnRetryLevel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent relaunchGameAsRetry = new Intent(context, SphereCollider.class);
+                context.startActivity(relaunchGameAsRetry);
                 d.dismiss();
             }
         });

@@ -2,6 +2,9 @@ package com.example.clay.spherecollider;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,6 +21,22 @@ public class SphereCollider extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sphere_collider);
         initSplashButtons();
+        initBG();
+    }
+
+    /**
+     * sets up background colors for spheres
+     */
+    public void initBG(){
+
+        PorterDuff.Mode mode = PorterDuff.Mode.SRC_ATOP;
+        Drawable ballDrawable = findViewById(R.id.ball).getBackground();
+        Drawable deflaterDrawable = findViewById(R.id.deflater).getBackground();
+        Drawable inflaterDrawable = findViewById(R.id.inflater).getBackground();
+
+        ballDrawable.setColorFilter(Color.parseColor("#2ecc71"), mode);
+        deflaterDrawable.setColorFilter(Color.parseColor("#e74c3c"), mode);
+        inflaterDrawable.setColorFilter(Color.parseColor("#34495e"), mode);
     }
 
 
@@ -51,6 +70,20 @@ public class SphereCollider extends Activity {
             }
 
         });
+        // TO SHOW A PAUSE MENU MODAL
+        findViewById(R.id.btnTestPauseMenu).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                HashMap<String, String> options = new HashMap<String, String>();
+                // options:
+                CustomModal cm = new CustomModal(SphereCollider.this, "pause_menu", options);
+            }
+
+        });
+
+
     }
 
     public void showLevels(){

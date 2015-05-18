@@ -123,20 +123,23 @@ public class SphereCollider extends Activity {
         options.put("score", score + "");
 
         // pass in the total amount of points the user collected per  value below
-        options.put("scoreProgressVal", 87 + ""); // being parsed as int in CustomModal class
+        options.put("scoreProgressVal", percent + ""); // being parsed as int in CustomModal class
 
         switch (winLossType) {
             case 1:
                 options.put("title", "Level Complete");
+                options.put("levelFailed", "false");
                 options.put("msg", "Good Job!");
                 new UpdateLevelCompletedTask().execute(gameMediator.getLevelId());
                 break;
             case 2:
                 options.put("title", "Level Failed");
+                options.put("levelFailed", "true");
                 options.put("msg", "You ran out of Spheres to collect to score points.");
                 break;
             case 3:
                 options.put("title", "Level Failed");
+                options.put("levelFailed", "true");
                 options.put("msg", "You grew too large.");
                 break;
         }
