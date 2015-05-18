@@ -1,5 +1,6 @@
 package com.example.clay.spherecollider.view.dialogs;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -119,7 +120,7 @@ public class CustomModal {
         // Progress Bar code below was used from the following site
         // https://github.com/lzyzsd/CircleProgress/blob/master/example/src/main/res/layout/activity_my.xml
         donutProgress = (DonutProgress) d.findViewById(R.id.donut_progress);
-        donutProgress.setProgress(Integer.parseInt( options.get("scoreProgressVal") ));
+        donutProgress.setProgress(Integer.parseInt(options.get("scoreProgressVal")));
 
         Button btnShowLevels = (Button)d.findViewById(R.id.btnShowLevels);
         btnShowLevels.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +143,8 @@ public class CustomModal {
                 gameMediator.setLevelId(gameMediator.getLevelId() + 1);
 
                 Intent startBallGame = new Intent(context, SphereCollider.class);
+                ((Activity)context).finish();
+
                 context.startActivity(startBallGame);
 
                 d.dismiss();
