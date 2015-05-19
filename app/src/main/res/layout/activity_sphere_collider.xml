@@ -27,20 +27,26 @@
             android:layout_width="200dp"
             android:background="@drawable/legend_circle"
             android:id="@+id/inflater"
-            android:layout_alignBottom="@+id/deflater"
-            android:layout_alignLeft="@+id/txtViewAppName"
-            android:layout_alignStart="@+id/txtViewAppName"
-            android:layout_marginLeft="97dp"
-            android:layout_marginStart="97dp" />
+            android:layout_marginLeft="120dp"
+            android:layout_marginStart="97dp"
+            android:layout_marginTop="100dp" />
 
         <View
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:background="@drawable/legend_circle"
             android:id="@+id/deflater"
-            android:layout_alignBottom="@+id/ball"
-            android:layout_alignRight="@+id/txtViewAppName"
-            android:layout_alignEnd="@+id/txtViewAppName" />
+            android:layout_alignBottom="@+id/inflater"
+            android:layout_toRightOf="@+id/inflater"
+            android:layout_marginLeft="80dp"
+            android:layout_marginBottom="50dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AAFFFFFF">
 
         <TextView
             android:layout_width="match_parent"
@@ -51,7 +57,6 @@
             android:layout_margin="50dp"
             android:textSize="50sp"
             android:layout_gravity="center_horizontal" />
-
     </RelativeLayout>
 
     <LinearLayout
