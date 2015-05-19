@@ -9,7 +9,8 @@
         android:layout_height="fill_parent"
         android:baselineAligned="false"
         android:background="@drawable/app_bg"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:backgroundTint="#aaffffff">
 
         <LinearLayout
             android:orientation="vertical"
@@ -132,7 +133,9 @@
                     android:layout_alignStart="@+id/btnLaunchModal"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:layout_marginRight="5dp" />
+                    android:layout_marginRight="5dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -146,7 +149,9 @@
                     android:layout_alignStart="@+id/btnLaunchModal"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
             </LinearLayout>
 
         </LinearLayout>
